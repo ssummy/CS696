@@ -32,7 +32,7 @@ def kinase2(string):
     :param string: the protein sequence to be searched
     :return: a list of strings
     """
-    return re.findall("[ST]..[DE]", string)
+    return re.findall("[ST][A-Z]{2}[DE]", string)
 
 print(kinase2(test_protein))
 print(kinase2(test_protein) == ['TVAD', 'SGPE', 'SSFE', 'SSHE', 'SMTD', 'SIWE', 'SNEE', 'SKVE', 'TGQE', 'TEKE', 'TITE', 'TKAD', 'TSCD', 'TCLE', 'TTWE'])
@@ -50,7 +50,7 @@ def atp_binding_site(string):
     :param string: the protein sequence to be searched
     :return: a list of strings
     """
-    return re.findall("[AG]....GK[ST]", string)
+    return re.findall("[AG][A-Z]{4}GK[ST]", string)
 
 print(atp_binding_site(test_protein))
 print(atp_binding_site(test_protein) == ['ACCCCGKT', 'ACCYCGKT'])
@@ -69,7 +69,7 @@ def atp_variable_region(string):
     :param string: the protein sequence to be searched
     :return: a strings
     """
-    return re.search("[AG](....)GK[ST]", string).group(1)
+    return re.search("[AG]([A-Z]{4})GK[ST]", string).group(1)
 
 print(atp_variable_region(test_protein))
 print('CCCC' == atp_variable_region(test_protein))
@@ -86,7 +86,7 @@ def atp_start_pos(string):
     :param string: the protein sequence to be searched
     :return: int
     """
-    return re.search("[AG](....)GK[ST]", string).start(0)
+    return re.search("[AG]([A-Z]{4})GK[ST]", string).start(0)
 
 print(atp_start_pos(test_protein))
 print(254 == atp_start_pos(test_protein))
