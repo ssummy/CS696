@@ -35,7 +35,6 @@ def forest_predictor(filePath, labelCol, **kwargs):
         with open(filePath, 'r') as infile:
             data = [line.replace('\n', '').split(',') for line in infile]
 
-        #my_list2, my_list1 = map(list, zip(*data))
         y = []
         x = []
         #[x.append(filter(None, [item if not index == labelCol else y.append(item) for index, item in enumerate(column)])) for column in data]
